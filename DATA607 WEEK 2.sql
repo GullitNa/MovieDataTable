@@ -1,0 +1,38 @@
+CREATE TABLE MovieRatings (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    MovieName VARCHAR(100),
+    RaterName VARCHAR(100),
+    Rating INT
+);
+INSERT INTO MovieRatings (MovieName, RaterName, Rating)
+VALUES
+    ('Joker: Folie à Deux', 'Matt', 2),
+    ('Joker: Folie à Deux', 'Jesus', 1),
+    ('Joker: Folie à Deux', 'Alex', 2),
+	('Joker: Folie à Deux', 'Albert', 1),
+    ('Joker: Folie à Deux', 'Jeffery', 1),
+    ('Wicked', 'Matt', 1),
+    ('Wicked', 'Jesus', 3),
+    ('Wicked', 'Alex', 5),
+    ('Wicked', 'Albert', 3),
+    ('Wicked', 'Jeffery', 4),
+    ('Sonic the Hedgehog 3', 'Matt', 5),
+    ('Sonic the Hedgehog 3', 'Jesus', 4),
+    ('Sonic the Hedgehog 3', 'Alex', 4),
+    ('Sonic the Hedgehog 3', 'Albert', 3),
+    ('Sonic the Hedgehog 3', 'Jeffery', 4),
+	('The Substance', 'Matt', 4),
+    ('The Substance', 'Jesus', 5),
+    ('The Substance', 'Alex', 5),
+    ('The Substance', 'Albert', 1),
+    ('The Substance', 'Jeffery', 4),
+    ('Moana 2', 'Matt', 4),
+    ('Moana 2', 'Jesus', 5),
+    ('Moana 2', 'Alex', 2),
+    ('Moana 2', 'Albert', 1),
+    ('Moana 2', 'Jeffery', 2),
+    ('Babygirl', 'Matt', 3),
+    ('Babygirl', 'Jesus', 4),
+    ('Babygirl', 'Alex', 4),
+    ('Babygirl', 'Albert', 3),
+    ('Babygirl', 'Jeffery', 3);

@@ -1,0 +1,50 @@
+---
+title: "DATA 607 Week 2"
+author: "Gullit Navarrete"
+date: "2/9/25"
+output: openintro::lab_report
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(openintro)
+library(DBI)
+library(RMySQL)
+```
+
+### TRANSFER DATA FROM SQL DATABASE TO R DATAFRAME
+
+The following code is used to run a connection between the built table that was stored in the class SQL database and this R dataframe. Additionally I can confirm that the data is loaded in with the code in line 25
+```{r MySQL-connection, echo=FALSE}
+con <- dbConnect(RMySQL::MySQL(),
+                 dbname = "gullit.navarrete26", 
+                 host = "cuny607sql.mysql.database.azure.com", 
+                 user = "gullit.navarrete26", 
+                 password = "8f64d26864ec87e4", 
+                 port = 3306)
+dbListTables(con)
+```
+### RETRIVE THE DATA
+
+After running the connection to see if the data has successfully loaded in, I will now demonstrate the printing/display of the table data that had been built back in MySQL using the following code:
+```{r MySQL-table-data, echo=TRUE}
+table_data <- dbGetQuery(con, "SELECT * FROM movieratings;")
+print(table_data)
+```
+
+### Missing data strategy (for R)
+
+In the following example, and reminiscent of last week's code, I use a code to remove all rows without any valid data or "NA." This code is effective approach to implement because removing all void rows keeps the data overall concise and without any unnecessary data cluttering the display.
+```{r missing-data-strat, echo=TRUE}
+cleaned_data <- table_data %>%
+  drop_na()
+```
+
+### Missing data strategy (for SQL)
+
+Additionally, here is code that would normally remove the "NA" invalid values, or in this case, "null" in SQL. Displayed is a common way to resolve this issue, similarly to the approach for R, involving removing the unnecessary null values/invalid data. More specifically and more realistically, from the Rating column.
+```{r missing-data-strat-SQL, echo=TRUE, eval=FALSE}
+DELETE FROM MovieRatings
+WHERE Rating IS NULL;
+```
+...
